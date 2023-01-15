@@ -1,5 +1,5 @@
 # trees-vs-nns
-Inspired by the paper "Why do tree-based models still outperform deep learning on tabular data?", this is an attempt to beat a previously built NN's accuracy of 67% in predicting product ratings of an online store. The NN that I previously built was an NLP course project.
+Inspired by the paper "Why do tree-based models still outperform deep learning on tabular data?" (https://arxiv.org/abs/2207.08815), this is an attempt to beat a previously built NN's accuracy of 67% in predicting product ratings of an online store. The NN that I previously built was an NLP course project.
 
 ## Data
 The data has the following columns: 
@@ -56,5 +56,6 @@ Best result: 67% accuracy.
 The (initial) idea is the following:
 - use all data (columns)
 - encode Division Name, Department Name, and Class Name columns (probably simply using a one-hot-encoding approach)
-- train a statistical model for sentiment analysis (negative, neutral, positive) of the Title and Review Text columns (Scikit Learn's MultinomialNB, inspired by https://www.kaggle.com/code/burhanykiyakoglu/predicting-sentiment-from-clothing-reviews)
+- train a statistical model for sentiment analysis (negative, neutral, positive) of the Title and Review Text columns (Scikit Learn's MultinomialNB, inspired by https://www.kaggle.com/code/burhanykiyakoglu/predicting-sentiment-from-clothing-reviews, 1-2 negative, 3 neutral, 4-5 positive)
+  - in case the sentiment analysis classifier for the title won't reach at least 80% accuracy, use Huggingface's sentiment-analysis pipeline: https://huggingface.co/docs/transformers/v4.25.1/en/task_summary#text-classification
 - use one or more tree models, such as Scikit Learn's RandomForest and GradientBoostingTrees, and maybe also XGBoost and try to reach a better accuracy than 67% in predicting a product's rating from a data row
