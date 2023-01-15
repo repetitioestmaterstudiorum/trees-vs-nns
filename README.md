@@ -56,6 +56,6 @@ Best result: 67% accuracy.
 The (initial) idea is the following:
 - use all data (columns)
 - encode Division Name, Department Name, and Class Name columns (probably simply using a one-hot-encoding approach)
-- train a statistical model for sentiment analysis (negative, neutral, positive) of the Title and Review Text columns (Scikit Learn's MultinomialNB, inspired by https://www.kaggle.com/code/burhanykiyakoglu/predicting-sentiment-from-clothing-reviews, 1-2 negative, 3 neutral, 4-5 positive)
+- train a statistical model for sentiment analysis (1-5) of the Title and Review Text columns (Scikit Learn's MultinomialNB, inspired by https://www.kaggle.com/code/burhanykiyakoglu/predicting-sentiment-from-clothing-reviews)
   - in case the sentiment analysis classifier for the title won't reach at least 80% accuracy, use Huggingface's sentiment-analysis pipeline: https://huggingface.co/docs/transformers/v4.25.1/en/task_summary#text-classification
 - use one or more tree models, such as Scikit Learn's RandomForest and GradientBoostingTrees, and maybe also XGBoost and try to reach a better accuracy than 67% in predicting a product's rating from a data row
