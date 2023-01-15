@@ -14,8 +14,8 @@ The data has the following columns:
 - productdepartment
 
 The first 3 dataset rows look like this:
-| ID    | Clothing ID | Age | Title                                            | Review Text                                         | Rating | Recommended IND | Positive Feedback Count | Division Name  | Department Name | Class Name | 6231 | 2752 | 18516 |
-| ----- | ----------- | --- | ------------------------------------------------ | --------------------------------------------------- | ------ | --------------- | ----------------------- | -------------- | --------------- | ---------- | ---- | ---- | ----- |
+| ID    | Clothing ID | Age | Title                                            | Review Text                                         | Rating | Recommended IND | Positive Feedback Count | Division Name  | Department Name | Class Name |
+| ----- | ----------- | --- | ------------------------------------------------ | --------------------------------------------------- | ------ | --------------- | ----------------------- | -------------- | --------------- | ---------- |
 | 7828  | 1082        | 32  | I wanted to love this                            | I really wanted to love this dress.... \\n\\ni a... | 3      | 0               | 0                       | General        | Dresses         | Dresses    |
 | 3435  | 1056        | 38  | Watch out for dye staining your load of laundry! | I read the cleaning instructions label careful...   | 1      | 0               | 6                       | General Petite | Bottoms         | Pants      |
 | 23135 | 1079        | 39  | Disappointing                                    | This is such beautiful material, but the sleev...   | 3      | 0               | 22                      | General Petite | Dresses         | Dresses    |
@@ -25,7 +25,6 @@ An emphasis (and primary requirement in the exercise) was to use the review text
 Class imbalances: rating 5 occurs ~56% of the time.
 
 The tabular data is available here: https://www.kaggle.com/datasets/nicapotato/womens-ecommerce-clothing-reviews
-
 
 ## NN approach to be beaten
 The NN approach had the following characteristics: 
