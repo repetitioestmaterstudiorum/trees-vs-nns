@@ -59,3 +59,10 @@ The (initial) idea is the following:
 - train a statistical model for sentiment analysis (1-5) of the Title and Review Text columns (Scikit Learn's MultinomialNB, inspired by https://www.kaggle.com/code/burhanykiyakoglu/predicting-sentiment-from-clothing-reviews)
   - in case the sentiment analysis classifier for the title won't reach at least 80% accuracy, use Huggingface's sentiment-analysis pipeline: https://huggingface.co/docs/transformers/v4.25.1/en/task_summary#text-classification
 - use one or more tree models, such as Scikit Learn's RandomForest and GradientBoostingTrees, and maybe also XGBoost and try to reach a better accuracy than 67% in predicting a product's rating from a data row
+
+## Log / Learnings
+- instead of one hot encoding Division Name, Department Name, and Class Name columns, I just assign a number for each unique category -> it's simple and fast
+- MultinomialNB is more than 100 times faster and only slightly less accurate (~3%) for title-based rating prediction than LogisticRegression with this data
+- dropping instead of filling empty rows of text increases the title-based rating prediction accuracy by around ~1%, but makes working with the data harder
+- Logistic Regression is the Scikit-Learn model with the best base accuracy (without much hyperparameter tuning) for this data and preprocessing
+- 
