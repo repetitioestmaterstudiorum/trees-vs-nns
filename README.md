@@ -75,5 +75,11 @@ The (initial) idea is the following:
 - Logistic Regression is the Scikit-Learn supervised learning model with the best base accuracy for title-based rating prediction (without much hyperparameter tuning) for this data and preprocessing
 - it's a surprise and seems wrong that the title based rating predictions are more accurate (~61%) than review text based ones (~55%). There must be the possibility to extract more out of review texts, since they're longer and contain more information?
 - initial tree model (Random Forest) results on all data with sentiment (rating predictions) from title and review texts: ~65% accuracy
-- after a switch to one hot encoding of categories, ensuring consistent transformation across datasets (fit on train, transform on all datasets with the same encoder), accuracy results are unexpected... Random Forest: -3%, Logistic Regression: -.5%, Gradient Boosting: +.1%, XGBoost: -.7%. I can only conclude that either I made a mistake (but I double-checked that I didn't) or the perviously wrongly encoded categories happened to make the results slightly better by chance. Will try dropping these categories next to see if results are better then
-- dropping instead of filling empty rows increases review text sentiment prediction by .5%, but decreases title sentiment prediction by ~1%. It decreases Random Forest tabular accuracy by 2%, and increases accuracies for Logistic Regression, Gradient Boosting, and XGBoosst by ~0.2-0.5 %
+- dropping instead of filling empty rows increases review text sentiment prediction by .5%, but decreases title sentiment prediction by ~1%. It decreases Random Forest tabular accuracy by 2%, and increases accuracies for Logistic Regression, Gradient Boosting, and XGBoosst by ~.2-.5 %
+- after a switch to one hot encoding of categories, ensuring consistent transformation across datasets (fit on train, transform on all datasets with the same encoder), accuracy results are unexpected... Random Forest: -3%, Logistic Regression: -.5%, Gradient Boosting: +.1%, XGBoost: -.7%. I can only conclude that either I made a mistake (but I double-checked that I didn't) or the perviously wrongly encoded categories happened to make the results slightly better by chance
+
+### Next Ideas
+
+- drop categorical columns (Department Name, etc.) and compare results
+- drop Review Text and compare (because does not reach more than majority class accuracy -> ~55%)
+- think about adding vectorized title and review text as columns instead of prior sentiment extraction
