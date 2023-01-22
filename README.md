@@ -85,4 +85,5 @@ The (initial) idea is the following:
 
 - make correlation matrices
 - think about adding vectorized title and review text as columns instead of prior sentiment extraction
+- think about data augmentation
 - hyperparameter tuning with wandb
