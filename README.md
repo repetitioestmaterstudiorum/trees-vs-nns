@@ -79,10 +79,10 @@ The (initial) idea is the following:
 - after a switch to one hot encoding of categories, ensuring consistent transformation across datasets (fit on train, transform on all datasets with the same encoder), accuracy results are unexpected... Random Forest: -3%, Logistic Regression: -.5%, Gradient Boosting: +.1%, XGBoost: -.7%. I can only conclude that either I made a mistake (but I double-checked that I didn't) or the perviously wrongly encoded categories happened to make the results slightly better by chance
 - tabular accuracies are slighly worse for tree models and slighly better for Logistic Regression without the categorical columns data in X
 - dropping the Reviev Text Sentiment (with ~55% accuracy predicting Rating) increases boosted tree models' accuracy slightly, Random Forest by 2%, and the Linear Regression does not converge anymore (with 10000 max_iter, like before) but the accuracy doesn't decrease more than 1%. Very interesting result
+- dropping both Title and Review Text decreased the performance of all models (expected). Random Forest: 62->55%, Logistic Regression: 65->62%, Gradient Boosting: 64->60%, XGBoost: 65->62%
 
 ### Next Ideas
 
-- drop Review Text and Title
 - make correlation matrices
 - think about adding vectorized title and review text as columns instead of prior sentiment extraction
 - hyperparameter tuning with wandb
