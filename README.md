@@ -80,10 +80,29 @@ The (initial) idea is the following:
 - tabular accuracies are slighly worse for tree models and slighly better for Logistic Regression without the categorical columns data in X
 - dropping the Reviev Text Sentiment (with ~55% accuracy predicting Rating) increases boosted tree models' accuracy slightly, Random Forest by 2%, and the Linear Regression does not converge anymore (with 10000 max_iter, like before) but the accuracy doesn't decrease more than 1%. Very interesting result
 - dropping both Title and Review Text decreased the performance of all models (expected). Random Forest: 62->55%, Logistic Regression: 65->62%, Gradient Boosting: 64->60%, XGBoost: 65->62%
+- adding vectorized data to the dataframe increases its dimensionality a lot, which is why I stopped computing Random Forest, Logistic Regression, and Gradient Boosting results for now
+- adding the vectorized title as columns to the dataframe increases XGBoost's accuracy to 63%
+- doing the same with the text leads to 64.5% accuracy with XGBoost. Finally, the review text, which contains more words than the title, seems to hold more information than the title. Running this took 3 hours, so the next step is using another vectorization for text and try to improve this (count vectorizer)
+- using the count vectorizer resulted in the same amount of columns (212450 of which ~30 aren't a OHE of the text). Need to find a way to control the vector length. The result is a bit worse with ~63.5% accuracy
+- using max_features=5000 for the tfidf_vectorizer, the training time is reduced from ~3h to 5s again for XGBoost, but accuracy is en par with the count vectorizer (and no max_features, ~3h train time)
+  - with 1'000 features, training time is ~1s and the accuracy is 63.41%
+  - with 5'000 features, training time is ~5s and the accuracy is 63.71%
+  - with 7'000 features, training time is ~6s and the accuracy is 64.01%
+  - with 8'000 features, training time is ~7s and the accuracy is 64.13%
+  - with 9'000 features, training time is ~8s and the accuracy is 63.24%
+  - with 10'000 features, training time is ~8s and the accuracy is 63.50%
+  - with 30'000 features, training time is ~29s and the accuracy is 63.33%
+  - with 50'000 features, training time is ~53s and the accuracy is 63.67%
+  - with 100'000 features, training time is ~5min and the accuracy is 63.67%
+  - with 150'000 features, training time is ~10min and the accuracy is 63.67%
+- after increasing the ngram range from 1,2 to 1,3 for the review text
+  - with 6'000 features, training time is ~6s and the accuracy is 63.62%
+  - with 7'000 features, training time is ~6s and the accuracy is 63.71%
+  - with 8'000 features, training time is ~7s and the accuracy is 63.62%
+  - with 10'000 features, training time is ~8s and the accuracy is 63.41%
+- adding back the title to the best result (10k features, ngram range 1,2): 35s, 64.82% accuracy
+- it seems that the best performance can be reached by perviously training a model on predicting ratings independently on title, then review, and using these models' predictions as additional columns for the tabular data (like a sentiment), leads to the best results in this case. An interesting insight is how slow XGBoost is for high dimensional data compared to MultinomialNB
 
 ### Next Ideas
 
-- make correlation matrices
-- think about adding vectorized title and review text as columns instead of prior sentiment extraction
-- think about data augmentation
 - hyperparameter tuning with wandb
