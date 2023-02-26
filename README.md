@@ -1,6 +1,6 @@
 # trees-vs-nns
 
-Inspired by the paper "Why do tree-based models still outperform deep learning on tabular data?" (https://arxiv.org/abs/2207.08815), this is an attempt to beat a previously built NN's accuracy of 67% in predicting product ratings of an online store. The NN that I previously built was an NLP course project.
+Inspired by the paper "Why do tree-based models still outperform deep learning on tabular data?" (https://arxiv.org/abs/2207.08815), this is an attempt to beat a previously built NN's accuracy of 67% in predicting product ratings of an online store (referring to an NN I built during a course at university).
 
 ## Data
 
@@ -102,7 +102,16 @@ The (initial) idea is the following:
   - with 10'000 features, training time is ~8s and the accuracy is 63.41%
 - adding back the title to the best result (10k features, ngram range 1,2): 35s, 64.82% accuracy
 - it seems that the best performance can be reached by perviously training a model on predicting ratings independently on title, then review, and using these models' predictions as additional columns for the tabular data (like a sentiment), leads to the best results in this case. An interesting insight is how slow XGBoost is for high dimensional data compared to MultinomialNB
+- switching back to a multi-model approach: extract information from the title and review text columns, and add that to the tabular data, then use XGBoost for review classification
 
 ### Next Ideas
 
 - hyperparameter tuning with wandb
+
+## Key Takeaways
+
+- This dataset is not a good dataset to compare NN (e.g. fine-tuning BERT) and tree models, because most of the relevant information is contained in natural language, and NNs are better at extracting meaning out of natural language, at this point in time
+- Building encoders for categorical values takes quite some time. In real life, they have to be stored somehow to be reused in a production environment, to ensure that same inputs result in same outputs during training and inference time when pre-processing data
+- Using XGBoost for paragraph classification is not computationally efficient. Other models, such as MultinomialNB are better suited for this task
+- Manually keeping track of results is bery tedious. Solution: Tools like wandb.ai
+- 
