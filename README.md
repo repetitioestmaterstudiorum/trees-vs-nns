@@ -101,8 +101,9 @@ The (initial) idea is the following:
   - with 8'000 features, training time is ~7s and the accuracy is 63.62%
   - with 10'000 features, training time is ~8s and the accuracy is 63.41%
 - adding back the title to the best result (10k features, ngram range 1,2): 35s, 64.82% accuracy
-- it seems that the best performance can be reached by perviously training a model on predicting ratings independently on title, then review, and using these models' predictions as additional columns for the tabular data (like a sentiment), leads to the best results in this case. An interesting insight is how slow XGBoost is for high dimensional data compared to MultinomialNB
+- it seems that the best performance can be reached by perviously training a model on predicting ratings independently on title, then review, and using these models' predictions as additional columns for the tabular data (like a sentiment), leads to the best results in this case. An interesting insight is how slow XGBoost is for high dimensional data compared to Multinomial Naive Bayes or Logistic Regression
 - switching back to a multi-model approach: extract information from the title and review text columns, and add that to the tabular data, then use XGBoost for review classification
+- after applying max_features while vectorizing, the the review text logistic regression resulted in higher rating sentiment prediction than that for the title. Subsequently I found the optimum max_features for vectorizing the training data: 8000 max_features for title, 13000 for review text
 
 ### Next Ideas
 
@@ -114,4 +115,5 @@ The (initial) idea is the following:
 - Building encoders for categorical values takes quite some time. In real life, they have to be stored somehow to be reused in a production environment, to ensure that same inputs result in same outputs during training and inference time when pre-processing data
 - Using XGBoost for paragraph classification is not computationally efficient. Other models, such as MultinomialNB are better suited for this task
 - Manually keeping track of results is bery tedious. Solution: Tools like wandb.ai
+- Vectorizing can yield better text classification results when applying max_features
 - 
