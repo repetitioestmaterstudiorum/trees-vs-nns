@@ -104,13 +104,13 @@ The (initial) idea is the following:
 - it seems that the best performance can be reached by perviously training a model on predicting ratings independently on title, then review, and using these models' predictions as additional columns for the tabular data (like a sentiment), leads to the best results in this case. An interesting insight is how slow XGBoost is for high dimensional data compared to Multinomial Naive Bayes or Logistic Regression
 - switching back to a multi-model approach: extract information from the title and review text columns, and add that to the tabular data, then use XGBoost for review classification
 - after applying max_features while vectorizing, the the review text logistic regression resulted in higher rating sentiment prediction accuracy than that for the title. This is what I initially expected; that the review text, because it is longer, contains more information. Subsequently I found the optimum max_features for vectorizing the training data: 8000 max_features for title, 13000 for review text
-- since Logistic Regression yields better in this case for rating sentiment prediction than XGBoost and other models I've tried, I used it also for the tabular data, and was surprised to see that with standard hyper parameters, Logistic Regression performs 1% better than the already slightly optimized XGBoost, yielding a new best score of 67.67%! If the same accuracy can be achieved on the test set in the end as well, which would already beat the 67% (initial goal of this little project)
--
+- since Logistic Regression yields better in this case for rating sentiment prediction than XGBoost and other models I've tried, I used it also for the tabular data, and was surprised to see that with standard hyper parameters, Logistic Regression performs 1% better than the already slightly optimized XGBoost, yielding a new best score of 67.67%! If the same accuracy can be achieved on the test set in the end as well, this would already beat the 67% (initial goal of this project)
+- hyperparameter optimization fox XGBoost yields a bit higher results than no tuning, but still not better than Logistic Regression for this task: ~66.90% (instead of 66.26% without tuning)
 
 ### Next Ideas
 
-- hyperparameter tuning XGBoost with wandb
 - again concat the (now much shortened) review text and title vectors to the tabular data, since Logistic Regression seems to perform best for both tasks (text to rating sentiment, tabular data to rating)
+- alternative to hyperopt: https://www.youtube.com/watch?v=9zrmUIlScdY&list=PLD80i8An1OEGajeVo15ohAQYF1Ttle0lk
 
 ## Key Takeaways
 
@@ -119,4 +119,3 @@ The (initial) idea is the following:
 - Using XGBoost for text classification is not computationally efficient after a certain size. Other models, such as MultinomialNB (and to a lesser extend Logistic Regression), are better suited for this task
 - Manually keeping track of results is tedious. Solution: Tools like wandb.ai
 - When vectorizing (e.g. count vectorizer, tfidf vectorizer), higher accuracy in text classification can be achieved when applying max_features to vectorizers (limiting the size of vectors)
-- 
