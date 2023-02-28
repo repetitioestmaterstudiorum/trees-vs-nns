@@ -107,6 +107,7 @@ The (initial) idea is the following:
 - since Logistic Regression yields better in this case for rating sentiment prediction than XGBoost and other models I've tried, I used it also for the tabular data, and was surprised to see that with standard hyper parameters, Logistic Regression performs 1% better than the already slightly optimized XGBoost, yielding a new best score of 67.67%! If the same accuracy can be achieved on the test set in the end as well, this would already beat the 67% (initial goal of this project)
 - hyperparameter optimization fox XGBoost yields a bit higher results than no tuning, but still not better than Logistic Regression for this task: ~66.90% (instead of 66.26% without tuning)
 - after letting hyperopt run for a longer time, the accuracy increased up to ~67.41% with XGBoost
+- finally, testing on test data shows that the accuracy drops by ~2% for both models
 
 ### Next Ideas
 
