@@ -106,10 +106,12 @@ The (initial) idea is the following:
 - after applying max_features while vectorizing, the the review text logistic regression resulted in higher rating sentiment prediction accuracy than that for the title. This is what I initially expected; that the review text, because it is longer, contains more information. Subsequently I found the optimum max_features for vectorizing the training data: 8000 max_features for title, 13000 for review text
 - since Logistic Regression yields better in this case for rating sentiment prediction than XGBoost and other models I've tried, I used it also for the tabular data, and was surprised to see that with standard hyper parameters, Logistic Regression performs 1% better than the already slightly optimized XGBoost, yielding a new best score of 67.67%! If the same accuracy can be achieved on the test set in the end as well, this would already beat the 67% (initial goal of this project)
 - hyperparameter optimization fox XGBoost yields a bit higher results than no tuning, but still not better than Logistic Regression for this task: ~66.90% (instead of 66.26% without tuning)
+- after letting hyperopt run for a longer time, the accuracy increased up to ~67.41% with XGBoost
 
 ### Next Ideas
 
 - again concat the (now much shortened) review text and title vectors to the tabular data, since Logistic Regression seems to perform best for both tasks (text to rating sentiment, tabular data to rating)
+- use hyperopt for the Logistic Regression model
 - alternative to hyperopt: https://www.youtube.com/watch?v=9zrmUIlScdY&list=PLD80i8An1OEGajeVo15ohAQYF1Ttle0lk
 
 ## Key Takeaways
