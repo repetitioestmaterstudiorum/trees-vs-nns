@@ -4,6 +4,8 @@ Inspired by the paper "Why do tree-based models still outperform deep learning o
 
 ## Teaser
 
+![wandb parallel coordinates accuracy graph](wandb-chart.png)
+
 ## Data
 
 The data has the following columns:
