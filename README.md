@@ -108,6 +108,7 @@ The (initial) idea is the following:
 - hyperparameter optimization fox XGBoost yields a bit higher results than no tuning, but still not better than Logistic Regression for this task: ~66.90% (instead of 66.26% without tuning)
 - after letting hyperopt run for a longer time, the accuracy increased up to ~67.41% with XGBoost
 - finally, testing on test data shows that the accuracy drops by ~2% for both models
+- after using wandb.sweep instead of hyperopt, XGBoost accuracy is ~67% on train, and 65.28% on test
 
 ### Next Ideas
 
