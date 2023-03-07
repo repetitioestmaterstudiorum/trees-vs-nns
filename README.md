@@ -2,6 +2,8 @@
 
 Inspired by the paper "Why do tree-based models still outperform deep learning on tabular data?" (https://arxiv.org/abs/2207.08815), this is an attempt to beat a previously built NN's accuracy of 67% in predicting product ratings of an online store (referring to an NN I built during a course at university).
 
+## Teaser
+
 ## Data
 
 The data has the following columns:
@@ -108,7 +110,7 @@ The (initial) idea is the following:
 - hyperparameter optimization fox XGBoost yields a bit higher results than no tuning, but still not better than Logistic Regression for this task: ~66.90% (instead of 66.26% without tuning)
 - after letting hyperopt run for a longer time, the accuracy increased up to ~67.41% with XGBoost
 - finally, testing on test data shows that the accuracy drops by ~2% for both models
-- after using wandb.sweep instead of hyperopt, XGBoost accuracy is ~67% on train, and 65.28% on test
+- after using wandb.sweep instead of hyperopt, XGBoost accuracy is ~67% on train, and 65.28% on test. wandb sweep data: https://wandb.ai/embereagle/trees-vs-nns/reports/-23-03-07-09-28-03---VmlldzozNzIxMDcz?accessToken=5mhhip55kxj8tgkwn6m1x40nss3xq9r91ek8xixwalq0hj8whenihek14vy0sprc
 
 ### Next Ideas
 
