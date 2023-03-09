@@ -117,8 +117,7 @@ The (initial) idea is the following:
 ### Next Ideas
 
 - again concat the (now much shortened) review text and title vectors to the tabular data, since Logistic Regression seems to perform best for both tasks (text to rating sentiment, tabular data to rating)
-- use hyperopt for the Logistic Regression model
-- alternative to hyperopt: https://www.youtube.com/watch?v=9zrmUIlScdY&list=PLD80i8An1OEGajeVo15ohAQYF1Ttle0lk
+- hyperparameter sweep for the logistic regression model
 
 ## Key Takeaways
 
@@ -127,3 +126,4 @@ The (initial) idea is the following:
 - Using XGBoost for text classification is not computationally efficient after a certain size. Other models, such as MultinomialNB (and to a lesser extend Logistic Regression), are better suited for this task
 - Manually keeping track of results is tedious. Solution: Tools like wandb.ai
 - When vectorizing (e.g. count vectorizer, tfidf vectorizer), higher accuracy in text classification can be achieved when applying max_features to vectorizers (limiting the size of vectors)
+- wandb can do hyperparameter sweeps
